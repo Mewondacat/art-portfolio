@@ -53,6 +53,17 @@ export const Footer: React.FC<FooterProps> = ({ config }) => {
             </svg>
           </a>
         )}
+        {socialLinks?.vgen && (
+          <a
+            href={socialLinks.vgen}
+            {...externalProps(socialLinks.vgen)}
+            className={styles.iconLink}
+            aria-label="VGen"
+            title="VGen"
+          >
+            <span className={styles.vgenLabel} aria-hidden="true">VGen</span>
+          </a>
+        )}
         {socialLinks?.email && (
           <a
             href={`mailto:${socialLinks.email}`}

@@ -4,10 +4,9 @@ const config: SiteConfig = {
   name: 'Sandra Suh',
   tagline: 'Illustration Artist',
   socialLinks: {
-    instagram: '/coming-soon',
-    twitter: '/coming-soon',
-    bluesky: '/coming-soon',
-    email: 'contact@sandrasuh.com'
+    bluesky: 'https://bsky.app/profile/mewondacat.bsky.social',
+    vgen: 'https://vgen.co/mewondacat',
+    email: 'mewondacat@gmail.com'
   },
   navItems: [
     { label: 'Home', path: '/' },

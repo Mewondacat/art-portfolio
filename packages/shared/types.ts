@@ -49,6 +49,7 @@ export interface SiteConfig {
     instagram?: string;
     twitter?: string;
     bluesky?: string;
+    vgen?: string;
     email?: string;
     github?: string;
     linkedin?: string;

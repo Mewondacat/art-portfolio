@@ -28,6 +28,11 @@
   transform: translateY(-2px);
 }
 
+.vgenLabel {
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
 .copyright {
   font-size: 0.75rem;
   color: var(--text-muted);

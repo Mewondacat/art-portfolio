@@ -113,6 +113,16 @@ export const Splash: React.FC<SplashProps> = ({
               </svg>
             </a>
           )}
+          {socialLinks?.vgen && (
+            <a
+              {...internalSocialProps(socialLinks.vgen)}
+              className={styles.socialIcon}
+              aria-label="VGen"
+              title="VGen"
+            >
+              <span className={styles.vgenLabel} aria-hidden="true">VGen</span>
+            </a>
+          )}
           {socialLinks?.email && (
             <a
               href={`mailto:${socialLinks.email}`}

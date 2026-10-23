@@ -28,10 +28,9 @@ describe('art portfolio configuration', () => {
     expect(JSON.stringify(siteConfig.navItems)).not.toContain('Commission Inquiries');
     expect(siteConfig.projects.some((project) => project.category === 'commissions')).toBe(true);
     expect(siteConfig.socialLinks).toEqual({
-      instagram: '/coming-soon',
-      twitter: '/coming-soon',
-      bluesky: '/coming-soon',
-      email: 'contact@sandrasuh.com'
+      bluesky: 'https://bsky.app/profile/mewondacat.bsky.social',
+      vgen: 'https://vgen.co/mewondacat',
+      email: 'mewondacat@gmail.com'
     });
   });
 

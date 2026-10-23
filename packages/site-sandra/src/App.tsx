@@ -38,7 +38,7 @@ export const App: React.FC = () => {
     <Splash
       title={siteConfig.name}
       subtitle={siteConfig.tagline}
-      heroImage={`${import.meta.env.BASE_URL}assets/merow.png`}
+      heroImage={`${import.meta.env.BASE_URL}assets/homepage-splash.png`}
       socialLinks={siteConfig.socialLinks}
       buttonText="ENTER"
     >
