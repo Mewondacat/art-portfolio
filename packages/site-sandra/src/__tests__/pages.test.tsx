@@ -139,6 +139,8 @@ describe('art portfolio gallery pages', () => {
       '/project/project-16',
       '/project/illustration-10',
       '/project/illustration-axel',
+      '/project/illustration-na',
+      '/project/illustration-aa',
       '/project/project-sketch',
       '/project/project-sketch2'
     ]);
@@ -237,8 +239,43 @@ describe('art portfolio gallery pages', () => {
       '/project/project-12',
       '/project/comm-3',
       '/project/comm-2',
-      '/project/comm-1'
+      '/project/comm-1',
+      '/project/commission-ffxiv-oc'
     ]);
+  });
+
+  it('shows the new portraits only in Illustrations', () => {
+    render(
+      <MemoryRouter initialEntries={['/category/illustrations']}>
+        <Routes>
+          <Route path="/category/:slug" element={<CategoryPage />} />
+        </Routes>
+      </MemoryRouter>
+    );
+
+    expect(screen.getByRole('img', { name: /golden spiral eyes/i }))
+      .toHaveAttribute('src', '/assets/na.png');
+    expect(screen.getByRole('img', { name: /Black-and-white close-up portrait/i }))
+      .toHaveAttribute('src', '/assets/aa.png');
+    expect(screen.queryByRole('img', { name: /FFXIV original character/i }))
+      .not.toBeInTheDocument();
+  });
+
+  it('shows the new FFXIV original character only in Commissions', () => {
+    render(
+      <MemoryRouter initialEntries={['/category/commissions']}>
+        <Routes>
+          <Route path="/category/:slug" element={<CategoryPage />} />
+        </Routes>
+      </MemoryRouter>
+    );
+
+    expect(screen.getByRole('img', { name: /FFXIV original character/i }))
+      .toHaveAttribute('src', '/assets/ffxiv_oc.jpg');
+    expect(screen.queryByRole('img', { name: /golden spiral eyes/i }))
+      .not.toBeInTheDocument();
+    expect(screen.queryByRole('img', { name: /Black-and-white close-up portrait/i }))
+      .not.toBeInTheDocument();
   });
 
   it('shows the pendulum GIF as the only Animation example', () => {

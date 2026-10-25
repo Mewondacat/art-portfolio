@@ -2,6 +2,19 @@ import { describe, expect, it } from 'vitest';
 import { siteConfig } from '../config';
 
 describe('art portfolio configuration', () => {
+  it('adds the new commission and illustrations without changing the homepage covers', () => {
+    for (const expected of [
+      { id: 'commission-ffxiv-oc', category: 'commissions', image: '/assets/ffxiv_oc.jpg', aspectRatio: '3 / 4' },
+      { id: 'illustration-na', category: 'illustrations', image: '/assets/na.png', aspectRatio: '4 / 5' },
+      { id: 'illustration-aa', category: 'illustrations', image: '/assets/aa.png', aspectRatio: '3 / 4' }
+    ]) {
+      const project = siteConfig.projects.find((item) => item.id === expected.id);
+      expect(project).toMatchObject({ ...expected, objectFit: 'contain', showOnHome: false });
+      expect(project?.path).toBe(`/project/${expected.id}`);
+      expect(project?.imageAlt).toBeTruthy();
+    }
+  });
+
   it('keeps Commissions prominent while grouping the other galleries under Work', () => {
     expect(siteConfig.navItems.map((item) => item.label)).toEqual([
       'Home',

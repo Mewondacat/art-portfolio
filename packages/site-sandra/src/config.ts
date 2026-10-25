@@ -218,6 +218,30 @@ const config: SiteConfig = {
       path: '/project/illustration-axel'
     },
     {
+      id: 'illustration-na',
+      title: 'NA',
+      imageAlt: 'Red and orange close-up portrait with glowing golden spiral eyes and violet highlights',
+      category: 'illustrations',
+      size: 'medium',
+      image: '/assets/na.png',
+      aspectRatio: '4 / 5',
+      objectFit: 'contain',
+      showOnHome: false,
+      path: '/project/illustration-na'
+    },
+    {
+      id: 'illustration-aa',
+      title: 'AA',
+      imageAlt: 'Black-and-white close-up portrait with dark hair and a spiral-patterned eye',
+      category: 'illustrations',
+      size: 'medium',
+      image: '/assets/aa.png',
+      aspectRatio: '3 / 4',
+      objectFit: 'contain',
+      showOnHome: false,
+      path: '/project/illustration-aa'
+    },
+    {
       id: 'project-sketch',
       title: '[Placeholder]',
       category: 'illustrations',
@@ -281,6 +305,18 @@ const config: SiteConfig = {
       objectFit: 'contain',
       showOnHome: false,
       path: '/project/comm-1'
+    },
+    {
+      id: 'commission-ffxiv-oc',
+      title: 'FFXIV Original Character',
+      imageAlt: 'Cat-eared FFXIV original character with braids making peace signs against a yellow background',
+      category: 'commissions',
+      size: 'medium',
+      image: '/assets/ffxiv_oc.jpg',
+      aspectRatio: '3 / 4',
+      objectFit: 'contain',
+      showOnHome: false,
+      path: '/project/commission-ffxiv-oc'
     },
     {
       id: 'comm-4',
