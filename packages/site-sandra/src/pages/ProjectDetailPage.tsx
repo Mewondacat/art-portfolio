@@ -11,7 +11,7 @@ export const ProjectDetailPage: React.FC = () => {
   const wrapRef = useRef<HTMLDivElement>(null);
   const transformRef = useRef<{ dx: number; dy: number; sx: number; sy: number } | null>(null);
 
-  const currentIndex = siteConfig.projects.findIndex((p) => p.id === id);
+  const currentIndex = siteConfig.projects.findIndex((p) => p.path === `/project/${id}` || p.id === id);
   const project = siteConfig.projects[currentIndex] || siteConfig.projects[0];
 
   const prevIndex = (currentIndex - 1 + siteConfig.projects.length) % siteConfig.projects.length;
@@ -22,6 +22,12 @@ export const ProjectDetailPage: React.FC = () => {
 
   const bgState = location.state as { backgroundLocation?: Location } | undefined;
   const targetReturnPath = bgState?.backgroundLocation?.pathname || '/';
+
+  useEffect(() => {
+    if (currentIndex >= 0 && location.pathname !== project.path) {
+      navigate(project.path, { replace: true, state: location.state });
+    }
+  }, [currentIndex, location.pathname, location.state, project.path, navigate]);
 
   useEffect(() => {
     return () => {
@@ -90,16 +96,16 @@ export const ProjectDetailPage: React.FC = () => {
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === 'ArrowLeft') {
-        navigate(`/project/${prevProject.id}`, { state: bgState });
+        navigate(prevProject.path, { state: bgState });
       } else if (e.key === 'ArrowRight') {
-        navigate(`/project/${nextProject.id}`, { state: bgState });
+        navigate(nextProject.path, { state: bgState });
       } else if (e.key === 'Escape') {
         handleBack();
       }
     };
     window.addEventListener('keydown', handleKeyDown);
     return () => window.removeEventListener('keydown', handleKeyDown);
-  }, [prevProject.id, nextProject.id, navigate, isExiting, bgState]);
+  }, [prevProject.path, nextProject.path, navigate, isExiting, bgState]);
 
   if (!project) return null;
 
@@ -124,7 +130,7 @@ export const ProjectDetailPage: React.FC = () => {
           title="Previous Artwork"
           onClick={(e) => {
             e.stopPropagation();
-            navigate(`/project/${prevProject.id}`, { state: bgState });
+            navigate(prevProject.path, { state: bgState });
           }}
         />
         <div
@@ -132,7 +138,7 @@ export const ProjectDetailPage: React.FC = () => {
           title="Next Artwork"
           onClick={(e) => {
             e.stopPropagation();
-            navigate(`/project/${nextProject.id}`, { state: bgState });
+            navigate(nextProject.path, { state: bgState });
           }}
         />
 
@@ -152,11 +158,11 @@ export const ProjectDetailPage: React.FC = () => {
       </div>
 
       <div className={styles.navRow} onClick={(e) => e.stopPropagation()}>
-        <Link to={`/project/${prevProject.id}`} state={bgState} className={styles.navLink}>
+        <Link to={prevProject.path} state={bgState} className={styles.navLink}>
           prev
         </Link>
         <span className={styles.navDivider}>/</span>
-        <Link to={`/project/${nextProject.id}`} state={bgState} className={styles.navLink}>
+        <Link to={nextProject.path} state={bgState} className={styles.navLink}>
           next
         </Link>
       </div>

@@ -56,9 +56,17 @@ const NavDropdown: React.FC<{ item: NavItem; onNavigate: () => void }> = ({ item
   return (
     <div
       className={`${styles.dropdown} ${open ? styles.dropdownOpen : ''}`}
-      onMouseEnter={() => setOpen(true)}
-      onMouseLeave={() => setOpen(false)}
-      onFocus={() => setOpen(true)}
+      onPointerEnter={(event) => {
+        if (event.pointerType === 'mouse') setOpen(true);
+      }}
+      onPointerLeave={(event) => {
+        if (event.pointerType === 'mouse') setOpen(false);
+      }}
+      onFocus={(event) => {
+        if (event.target instanceof HTMLAnchorElement) {
+          setOpen(true);
+        }
+      }}
       onKeyDown={(event) => {
         if (event.key === 'Escape') {
           setOpen(false);

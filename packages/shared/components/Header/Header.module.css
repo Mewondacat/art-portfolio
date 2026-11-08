@@ -183,11 +183,6 @@
     text-align: center;
   }
 
-  .dropdown:hover .dropdownMenu,
-  .dropdown:focus-within .dropdownMenu {
-    display: none;
-  }
-
   .dropdownOpen .dropdownMenu {
     display: block;
   }

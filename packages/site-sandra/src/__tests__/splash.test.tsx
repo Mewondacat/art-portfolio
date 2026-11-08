@@ -58,12 +58,11 @@ describe('opening screen and social links', () => {
       act(() => vi.advanceTimersByTime(400));
 
       expect(sessionStorage.getItem('has_entered_portfolio')).toBe('true');
+      expect(screen.getByRole('heading', { name: 'Selected Work' })).toBeInTheDocument();
       expect(screen.getByRole('link', { name: 'Explore Concepts' }))
         .toHaveAttribute('href', '/category/concepts');
-      expect(screen.getByRole('img', { name: /characters debating sushi/i }))
-        .toHaveAttribute('src', '/assets/merow.png');
-      expect(screen.getByRole('link', { name: 'Explore Illustration' }))
-        .toHaveAttribute('href', '/category/illustrations');
+      expect(screen.getByRole('img', { name: /golden spiral eyes/i }))
+        .toHaveAttribute('src', '/assets/na.png');
     } finally {
       vi.useRealTimers();
     }

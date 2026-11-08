@@ -1,0 +1,118 @@
+.page {
+  width: min(100%, 1000px);
+  margin: 0 auto;
+  padding: 2rem 1.5rem 3rem;
+}
+
+.intro {
+  margin-bottom: 2rem;
+}
+
+.intro h1 {
+  margin-bottom: 0.75rem;
+  font-size: clamp(1.6rem, 4vw, 2.3rem);
+  letter-spacing: 0.06em;
+}
+
+.page p {
+  color: var(--text-muted);
+  line-height: 1.7;
+}
+
+.sections {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.5rem 2.5rem;
+}
+
+.service {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.example {
+  width: 100%;
+  height: 300px;
+  object-fit: contain;
+  margin-bottom: 1.25rem;
+}
+
+.prices {
+  margin: 0 0 1.25rem;
+}
+
+.prices > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #333;
+}
+
+.prices dd {
+  margin: 0;
+  white-space: nowrap;
+}
+
+.requestLink {
+  align-self: flex-start;
+  margin-top: auto;
+  padding: 0.75rem 1rem;
+  border: 1px solid #444;
+}
+
+.requestLink:hover {
+  border-color: #fff;
+}
+
+.page h2 {
+  margin-bottom: 0.75rem;
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.contact {
+  margin-top: 2rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid #333;
+}
+
+.contactLinks {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 1.25rem 0;
+}
+
+.contactLinks a {
+  padding: 0.75rem 1rem;
+  border: 1px solid #444;
+  color: var(--text-primary);
+  overflow-wrap: anywhere;
+}
+
+.contactLinks a:hover {
+  border-color: #fff;
+}
+
+.artLink {
+  display: inline-block;
+  padding: 0.5rem 0;
+  color: var(--text-secondary);
+}
+
+.page a:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 4px;
+}
+
+@media (max-width: 760px) {
+  .sections {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .example {
+    height: 320px;
+  }
+}

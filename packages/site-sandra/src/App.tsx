@@ -7,6 +7,7 @@ import { ProjectDetailPage } from './pages/ProjectDetailPage';
 import { CategoryPage } from './pages/CategoryPage';
 import { AboutPage } from './pages/AboutPage';
 import { ComingSoonPage } from './pages/ComingSoonPage';
+import { CommissionInfoPage } from './pages/CommissionInfoPage';
 
 const AppRoutes: React.FC = () => {
   const location = useLocation();
@@ -19,6 +20,7 @@ const AppRoutes: React.FC = () => {
         <Route path="/" element={<HomePage />} />
         <Route path="/category/:slug" element={<CategoryPage />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/commission-info" element={<CommissionInfoPage />} />
         <Route path="/contact" element={<Navigate to="/about" replace />} />
         <Route path="/coming-soon" element={<ComingSoonPage />} />
         <Route path="/project/:id" element={<ProjectDetailPage />} />

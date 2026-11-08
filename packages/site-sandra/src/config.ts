@@ -1,5 +1,16 @@
 import type { SiteConfig } from '@portfolio/shared';
 
+export const selectedWorkProjectIds = [
+  'illustration-axel',
+  'commission-ffxiv-oc',
+  'commission-pink',
+  'project-16',
+  'illustration-na',
+  'illustration-aa',
+  'illustration-10',
+  'project-1'
+] as const;
+
 const config: SiteConfig = {
   name: 'Sandra Suh',
   tagline: 'Illustration Artist',
@@ -9,7 +20,7 @@ const config: SiteConfig = {
     email: 'mewondacat@gmail.com'
   },
   navItems: [
-    { label: 'Home', path: '/' },
+    { label: 'Selected Work', path: '/' },
     {
       label: 'Work',
       path: '/category/illustrations',
@@ -21,13 +32,20 @@ const config: SiteConfig = {
         { label: 'Concepts', path: '/category/concepts' }
       ]
     },
-    { label: 'Commissions', path: '/category/commissions' },
+    {
+      label: 'Commissions',
+      path: '/category/commissions',
+      children: [
+        { label: 'Commission Art', path: '/category/commissions' },
+        { label: 'Commission Info', path: '/commission-info' }
+      ]
+    },
     { label: 'About Me & Contact', path: '/about' }
   ],
   projects: [
     {
       id: 'sketch-skull-butterfly',
-      title: 'Skull & Butterfly',
+      title: 'Sketchbook 1',
       imageAlt: 'Graphite still-life sketch of a skull topped by a butterfly',
       category: 'sketchbook',
       size: 'medium',
@@ -35,11 +53,11 @@ const config: SiteConfig = {
       aspectRatio: '3 / 4',
       objectFit: 'contain',
       showOnHome: false,
-      path: '/project/sketch-skull-butterfly'
+      path: '/project/sketchbook1'
     },
     {
       id: 'sketch-animal-study',
-      title: 'Animal Study',
+      title: 'Sketchbook 2',
       imageAlt: 'Graphite animal study featuring a close view of a pair of eyes and a separate shaded form',
       category: 'sketchbook',
       size: 'medium',
@@ -47,11 +65,11 @@ const config: SiteConfig = {
       aspectRatio: '3 / 4',
       objectFit: 'contain',
       showOnHome: true,
-      path: '/project/sketch-animal-study'
+      path: '/project/sketchbook2'
     },
     {
       id: 'traditional-cat-reference',
-      title: 'Cat Reference Study',
+      title: 'Sketchbook 3',
       imageAlt: 'Pencil drawing of a cat displayed above the photographic reference used for the study',
       category: 'sketchbook',
       size: 'medium',
@@ -59,11 +77,11 @@ const config: SiteConfig = {
       aspectRatio: '3 / 4',
       objectFit: 'contain',
       showOnHome: false,
-      path: '/project/traditional-cat-reference'
+      path: '/project/sketchbook3'
     },
     {
       id: 'traditional-floral-sword',
-      title: 'Floral Sword',
+      title: 'Sketchbook 4',
       imageAlt: 'Hand-painted fantasy sword surrounded by green leaves and red-orange flourishes',
       category: 'sketchbook',
       size: 'medium',
@@ -71,11 +89,11 @@ const config: SiteConfig = {
       aspectRatio: '2475 / 3979',
       objectFit: 'contain',
       showOnHome: false,
-      path: '/project/traditional-floral-sword'
+      path: '/project/sketchbook4'
     },
     {
       id: 'traditional-adventure-time-style',
-      title: 'Adventure Time Style Study',
+      title: 'Sketchbook 5',
       imageAlt: 'Hand-painted cartoon character seated at a table in an Adventure Time-inspired style',
       category: 'sketchbook',
       size: 'medium',
@@ -83,11 +101,11 @@ const config: SiteConfig = {
       aspectRatio: '3093 / 2772',
       objectFit: 'contain',
       showOnHome: false,
-      path: '/project/traditional-adventure-time-style'
+      path: '/project/sketchbook5'
     },
     {
       id: 'sketchbook-seated-figure-study',
-      title: 'Seated Figure Study',
+      title: 'Sketchbook 6',
       imageAlt: 'Pencil figure study of a seated woman with one leg crossed over the other',
       category: 'sketchbook',
       size: 'medium',
@@ -96,11 +114,11 @@ const config: SiteConfig = {
       objectFit: 'contain',
       showOnHome: false,
       contentWarning: 'Figure Drawing / Nudity',
-      path: '/project/sketchbook-seated-figure-study'
+      path: '/project/sketchbook6'
     },
     {
       id: 'sketchbook-standing-male-figure-study',
-      title: 'Standing Figure Study',
+      title: 'Sketchbook 7',
       imageAlt: 'Pencil anatomy study of a nude standing male figure leaning on a staff',
       category: 'sketchbook',
       size: 'medium',
@@ -109,11 +127,11 @@ const config: SiteConfig = {
       objectFit: 'contain',
       showOnHome: false,
       contentWarning: 'Figure Drawing / Nudity',
-      path: '/project/sketchbook-standing-male-figure-study'
+      path: '/project/sketchbook7'
     },
     {
       id: 'sketchbook-figure-foot-anatomy-study',
-      title: 'Figure & Foot Anatomy Study',
+      title: 'Sketchbook 8',
       imageAlt: 'Pencil anatomy studies of a nude standing figure and two detailed feet',
       category: 'sketchbook',
       size: 'medium',
@@ -122,11 +140,11 @@ const config: SiteConfig = {
       objectFit: 'contain',
       showOnHome: false,
       contentWarning: 'Figure Drawing / Nudity',
-      path: '/project/sketchbook-figure-foot-anatomy-study'
+      path: '/project/sketchbook8'
     },
     {
       id: 'sculpture-creature-front',
-      title: 'Wearable Cardboard Creature — Front View',
+      title: 'Sculpture 1',
       imageAlt: 'Front view of a wearable cardboard creature sculpture with horns, fins, and layered armor',
       category: 'sculptures',
       size: 'medium',
@@ -134,11 +152,11 @@ const config: SiteConfig = {
       aspectRatio: '3 / 4',
       objectFit: 'contain',
       showOnHome: false,
-      path: '/project/sculpture-creature-front'
+      path: '/project/sculpture1'
     },
     {
       id: 'sculpture-creature-profile',
-      title: 'Wearable Cardboard Creature — Profile View',
+      title: 'Sculpture 2',
       imageAlt: 'Profile view of a wearable cardboard creature sculpture with layered spines, fins, and a tail',
       category: 'sculptures',
       size: 'medium',
@@ -146,11 +164,11 @@ const config: SiteConfig = {
       aspectRatio: '3 / 4',
       objectFit: 'contain',
       showOnHome: false,
-      path: '/project/sculpture-creature-profile'
+      path: '/project/sculpture2'
     },
     {
       id: 'sculpture-swan-koi-relief',
-      title: 'Swan and Koi Relief',
+      title: 'Sculpture 3',
       imageAlt: 'Sculptural relief of a white swan standing over a pond filled with pink and orange koi',
       category: 'sculptures',
       size: 'medium',
@@ -158,11 +176,11 @@ const config: SiteConfig = {
       aspectRatio: '773 / 853',
       objectFit: 'contain',
       showOnHome: true,
-      path: '/project/sculpture-swan-koi-relief'
+      path: '/project/sculpture3'
     },
     {
       id: 'animation-pendulum',
-      title: '[Placeholder]',
+      title: 'Animation 1',
       imageAlt: 'A colorful pendulum character swinging against a blue background',
       category: 'animation',
       size: 'hero',
@@ -171,31 +189,31 @@ const config: SiteConfig = {
       objectFit: 'contain',
       maxWidth: '960px',
       showOnHome: true,
-      path: '/project/animation-pendulum'
+      path: '/project/animation1'
     },
     {
       id: 'project-1',
-      title: '[Placeholder]',
+      title: 'Illustration 1',
       imageAlt: 'Winged celestial character surrounded by blue and violet organic forms',
       category: 'illustrations',
       size: 'medium',
       image: '/assets/athena.png',
       showOnHome: false,
-      path: '/project/project-1'
+      path: '/project/illustration1'
     },
     {
       id: 'project-16',
-      title: '[Placeholder]',
+      title: 'Illustration 2',
       imageAlt: 'Blue and violet digital portrait with a red geometric focus over one eye',
       category: 'illustrations',
       size: 'medium',
       image: '/assets/mainpageimage6.jpg',
       showOnHome: true,
-      path: '/project/project-16'
+      path: '/project/illustration2'
     },
     {
       id: 'illustration-10',
-      title: 'Illustration 10',
+      title: 'Illustration 3',
       imageAlt: 'Magenta-toned digital portrait of a dark-haired character wearing pink sunglasses',
       category: 'illustrations',
       size: 'medium',
@@ -203,11 +221,11 @@ const config: SiteConfig = {
       aspectRatio: '2480 / 3508',
       objectFit: 'contain',
       showOnHome: false,
-      path: '/project/illustration-10'
+      path: '/project/illustration3'
     },
     {
       id: 'illustration-axel',
-      title: 'Axel — Kingdom Hearts Fan Art',
+      title: 'Illustration 4',
       imageAlt: 'Fiery digital fan art of Axel from Kingdom Hearts',
       category: 'illustrations',
       size: 'medium',
@@ -215,11 +233,11 @@ const config: SiteConfig = {
       aspectRatio: '2480 / 3508',
       objectFit: 'contain',
       showOnHome: false,
-      path: '/project/illustration-axel'
+      path: '/project/illustration4'
     },
     {
       id: 'illustration-na',
-      title: 'NA',
+      title: 'Illustration 5',
       imageAlt: 'Red and orange close-up portrait with glowing golden spiral eyes and violet highlights',
       category: 'illustrations',
       size: 'medium',
@@ -227,11 +245,11 @@ const config: SiteConfig = {
       aspectRatio: '4 / 5',
       objectFit: 'contain',
       showOnHome: false,
-      path: '/project/illustration-na'
+      path: '/project/illustration5'
     },
     {
       id: 'illustration-aa',
-      title: 'AA',
+      title: 'Illustration 6',
       imageAlt: 'Black-and-white close-up portrait with dark hair and a spiral-patterned eye',
       category: 'illustrations',
       size: 'medium',
@@ -239,76 +257,76 @@ const config: SiteConfig = {
       aspectRatio: '3 / 4',
       objectFit: 'contain',
       showOnHome: false,
-      path: '/project/illustration-aa'
+      path: '/project/illustration6'
     },
     {
       id: 'project-sketch',
-      title: '[Placeholder]',
+      title: 'Illustration 7',
       category: 'illustrations',
       size: 'medium',
       image: '/assets/sketch.jpg',
       showOnHome: false,
-      path: '/project/project-sketch'
+      path: '/project/illustration7'
     },
     {
       id: 'project-sketch2',
-      title: '[Placeholder]',
+      title: 'Illustration 8',
       category: 'illustrations',
       size: 'medium',
       image: '/assets/sketch2.jpg',
       showOnHome: false,
-      path: '/project/project-sketch2'
+      path: '/project/illustration8'
     },
     {
       id: 'project-8',
-      title: '[Placeholder]',
+      title: 'Commission 1',
       imageAlt: 'Cat-eared character with golden eyes against a warm yellow background',
       category: 'commissions',
       size: 'medium',
       image: '/assets/kat.png',
       showOnHome: false,
-      path: '/project/project-8'
+      path: '/project/comms1'
     },
     {
       id: 'project-12',
-      title: '[Placeholder]',
+      title: 'Commission 2',
       category: 'commissions',
       size: 'medium',
       image: '/assets/rester.png',
-      path: '/project/project-12'
+      path: '/project/comms2'
     },
     {
       id: 'comm-3',
-      title: '[Placeholder]',
+      title: 'Commission 3',
       category: 'commissions',
       size: 'medium',
       image: '/assets/comm_3.png',
       showOnHome: false,
-      path: '/project/comm-3'
+      path: '/project/comms3'
     },
     {
       id: 'comm-2',
-      title: '[Placeholder]',
+      title: 'Commission 4',
       category: 'commissions',
       size: 'medium',
       image: '/assets/comm_2.jpg',
       showOnHome: false,
-      path: '/project/comm-2'
+      path: '/project/comms4'
     },
     {
       id: 'comm-1',
-      title: '[Placeholder]',
+      title: 'Commission 5',
       category: 'commissions',
       size: 'hero',
       image: '/assets/comm_1.jpg',
       aspectRatio: '1 / 1',
       objectFit: 'contain',
       showOnHome: false,
-      path: '/project/comm-1'
+      path: '/project/comms5'
     },
     {
       id: 'commission-ffxiv-oc',
-      title: 'FFXIV Original Character',
+      title: 'Commission 6',
       imageAlt: 'Cat-eared FFXIV original character with braids making peace signs against a yellow background',
       category: 'commissions',
       size: 'medium',
@@ -316,22 +334,58 @@ const config: SiteConfig = {
       aspectRatio: '3 / 4',
       objectFit: 'contain',
       showOnHome: false,
-      path: '/project/commission-ffxiv-oc'
+      path: '/project/comms6'
+    },
+    {
+      id: 'commission-pink',
+      title: 'Commission 7',
+      imageAlt: 'Pink-haired character with braided buns holding a gold staff against a blue background',
+      category: 'commissions',
+      size: 'medium',
+      image: '/assets/pink.png',
+      aspectRatio: '2480 / 3508',
+      objectFit: 'contain',
+      showOnHome: false,
+      path: '/project/comms7'
+    },
+    {
+      id: 'commission-badaboo',
+      title: 'Commission 8',
+      imageAlt: 'Rabbit-eared chibi character in a red shirt and black vest holding a knife and a basket',
+      category: 'commissions',
+      size: 'medium',
+      image: '/assets/badaboo.png',
+      aspectRatio: '1 / 1',
+      objectFit: 'contain',
+      showOnHome: false,
+      path: '/project/comms8'
+    },
+    {
+      id: 'commission-peetapoo',
+      title: 'Commission 9',
+      imageAlt: 'Chibi witch in a purple hat and dress drinking bubble tea',
+      category: 'commissions',
+      size: 'medium',
+      image: '/assets/peetapoo.png',
+      aspectRatio: '1 / 1',
+      objectFit: 'contain',
+      showOnHome: false,
+      path: '/project/comms9'
     },
     {
       id: 'comm-4',
-      title: '[Placeholder]',
+      title: 'Concept 1',
       category: 'concepts',
       size: 'medium',
       image: '/assets/comm_4.png',
       aspectRatio: '1 / 1',
       objectFit: 'contain',
       showOnHome: false,
-      path: '/project/comm-4'
+      path: '/project/concept1'
     },
     {
       id: 'concept-merow',
-      title: '[Placeholder]',
+      title: 'Concept 2',
       imageAlt: 'Two illustrated characters debating sushi over the phone',
       category: 'concepts',
       size: 'medium',
@@ -339,33 +393,33 @@ const config: SiteConfig = {
       aspectRatio: '1 / 1',
       objectFit: 'contain',
       showOnHome: false,
-      path: '/project/concept-merow'
+      path: '/project/concept2'
     },
     {
       id: 'comm-image1',
-      title: '[Placeholder]',
+      title: 'Concept 3',
       category: 'concepts',
       size: 'medium',
       image: '/assets/image-1.jpg',
       aspectRatio: '1 / 1',
       objectFit: 'contain',
       showOnHome: false,
-      path: '/project/comm-image1'
+      path: '/project/concept3'
     },
     {
       id: 'comm-5',
-      title: '[Placeholder]',
+      title: 'Concept 4',
       category: 'concepts',
       size: 'medium',
       image: '/assets/comm_5.png',
       aspectRatio: '1 / 1',
       objectFit: 'contain',
       showOnHome: false,
-      path: '/project/comm-5'
+      path: '/project/concept4'
     },
     {
       id: 'concept-example',
-      title: '[Placeholder]',
+      title: 'Concept 5',
       imageAlt: 'Two illustrated characters posing with drinks and a cat against a blue background',
       category: 'concepts',
       size: 'medium',
@@ -373,11 +427,11 @@ const config: SiteConfig = {
       aspectRatio: '1 / 1',
       objectFit: 'contain',
       showOnHome: false,
-      path: '/project/concept-example'
+      path: '/project/concept5'
     },
     {
       id: 'concept-window-portrait',
-      title: '[Placeholder]',
+      title: 'Concept 6',
       imageAlt: 'Two illustrated characters standing together in front of an arched window',
       category: 'concepts',
       size: 'medium',
@@ -385,11 +439,11 @@ const config: SiteConfig = {
       aspectRatio: '1 / 1',
       objectFit: 'contain',
       showOnHome: false,
-      path: '/project/concept-window-portrait'
+      path: '/project/concept6'
     },
     {
       id: 'project-17',
-      title: '[Placeholder]',
+      title: 'Concept 7',
       imageAlt: 'Teal-haired character posed beside a television in a softly lit room',
       category: 'concepts',
       size: 'medium',
@@ -397,11 +451,11 @@ const config: SiteConfig = {
       aspectRatio: '1 / 1',
       objectFit: 'contain',
       showOnHome: false,
-      path: '/project/project-17'
+      path: '/project/concept7'
     },
     {
       id: 'project-18',
-      title: '[Placeholder]',
+      title: 'Concept 8',
       imageAlt: 'Two stylized characters together in a dark purple-toned scene',
       category: 'concepts',
       size: 'medium',
@@ -409,11 +463,11 @@ const config: SiteConfig = {
       aspectRatio: '1 / 1',
       objectFit: 'contain',
       showOnHome: false,
-      path: '/project/project-18'
+      path: '/project/concept8'
     },
     {
       id: 'concept-3',
-      title: '[Placeholder]',
+      title: 'Concept 9',
       imageAlt: 'Two stylized characters in a dark teal game-inspired scene with humorous dialogue',
       category: 'concepts',
       size: 'medium',
@@ -421,11 +475,11 @@ const config: SiteConfig = {
       aspectRatio: '1 / 1',
       objectFit: 'contain',
       showOnHome: false,
-      path: '/project/concept-3'
+      path: '/project/concept9'
     },
     {
       id: 'concept-adventures-of-bingus',
-      title: 'Adventures of Bingus',
+      title: 'Concept 10',
       imageAlt: 'Two cat-eared characters with oversized swords posed before explosions on an Adventures of Bingus cover',
       category: 'concepts',
       size: 'medium',
@@ -433,11 +487,11 @@ const config: SiteConfig = {
       aspectRatio: '1 / 1',
       objectFit: 'contain',
       showOnHome: false,
-      path: '/project/concept-adventures-of-bingus'
+      path: '/project/concept10'
     },
     {
       id: 'concept-cowboy-character',
-      title: 'Cowboy Character Concept',
+      title: 'Concept 11',
       imageAlt: 'Monochrome cowboy character wearing two stacked hats and a scarf on a textured tan background',
       category: 'concepts',
       size: 'medium',
@@ -445,11 +499,11 @@ const config: SiteConfig = {
       aspectRatio: '1 / 1',
       objectFit: 'contain',
       showOnHome: false,
-      path: '/project/concept-cowboy-character'
+      path: '/project/concept11'
     },
     {
       id: 'commission-tenko',
-      title: 'Tenko Commission',
+      title: 'Concept 12',
       imageAlt: 'Cat-eared maid posing with Mudkip, Marill, and Skitty',
       category: 'concepts',
       size: 'medium',
@@ -457,11 +511,11 @@ const config: SiteConfig = {
       aspectRatio: '4 / 5',
       objectFit: 'contain',
       showOnHome: false,
-      path: '/project/commission-tenko'
+      path: '/project/concept12'
     },
     {
       id: 'illustration-va',
-      title: 'Moonlit Balcony',
+      title: 'Concept 13',
       imageAlt: 'Blonde character in a white and blue outfit standing beneath gothic arches on a moonlit balcony',
       category: 'concepts',
       size: 'medium',
@@ -469,11 +523,11 @@ const config: SiteConfig = {
       aspectRatio: '5950 / 3850',
       objectFit: 'contain',
       showOnHome: false,
-      path: '/project/illustration-va'
+      path: '/project/concept13'
     },
     {
       id: 'concept-beach-help',
-      title: 'Beach Day',
+      title: 'Concept 14',
       imageAlt: 'Illustrated character in a black dress on a beach, with someone drowning in the background',
       category: 'concepts',
       size: 'medium',
@@ -481,7 +535,7 @@ const config: SiteConfig = {
       aspectRatio: '4 / 5',
       objectFit: 'contain',
       showOnHome: false,
-      path: '/project/concept-beach-help'
+      path: '/project/concept14'
     }
   ]
 };

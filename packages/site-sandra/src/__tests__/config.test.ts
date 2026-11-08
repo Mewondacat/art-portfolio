@@ -1,23 +1,44 @@
 import { describe, expect, it } from 'vitest';
-import { siteConfig } from '../config';
+import { selectedWorkProjectIds, siteConfig } from '../config';
 
 describe('art portfolio configuration', () => {
+  it('curates existing artwork without moving or duplicating projects', () => {
+    expect(selectedWorkProjectIds).toHaveLength(8);
+    expect(selectedWorkProjectIds).toContain('commission-pink');
+    expect(selectedWorkProjectIds).not.toContain('commission-badaboo');
+    expect(selectedWorkProjectIds).not.toContain('commission-peetapoo');
+    expect(selectedWorkProjectIds).not.toContain('sculpture-swan-koi-relief');
+    expect(selectedWorkProjectIds).not.toContain('concept-window-portrait');
+    expect(siteConfig.projects.find((item) => item.id === 'sculpture-swan-koi-relief')?.category).toBe('sculptures');
+    expect(siteConfig.projects.find((item) => item.id === 'concept-window-portrait')?.category).toBe('concepts');
+    expect(new Set(selectedWorkProjectIds).size).toBe(selectedWorkProjectIds.length);
+    for (const id of selectedWorkProjectIds) {
+      const project = siteConfig.projects.find((item) => item.id === id);
+      expect(project?.image).toBeTruthy();
+      expect(project?.contentWarning).toBeUndefined();
+      expect(siteConfig.projects.filter((item) => item.id === id)).toHaveLength(1);
+    }
+    expect(siteConfig.projects.find((item) => item.id === 'commission-ffxiv-oc')?.category).toBe('commissions');
+    expect(siteConfig.projects.find((item) => item.id === 'illustration-na')?.category).toBe('illustrations');
+    expect(siteConfig.projects.find((item) => item.id === 'illustration-aa')?.category).toBe('illustrations');
+  });
+
   it('adds the new commission and illustrations without changing the homepage covers', () => {
     for (const expected of [
-      { id: 'commission-ffxiv-oc', category: 'commissions', image: '/assets/ffxiv_oc.jpg', aspectRatio: '3 / 4' },
-      { id: 'illustration-na', category: 'illustrations', image: '/assets/na.png', aspectRatio: '4 / 5' },
-      { id: 'illustration-aa', category: 'illustrations', image: '/assets/aa.png', aspectRatio: '3 / 4' }
+      { id: 'commission-ffxiv-oc', category: 'commissions', image: '/assets/ffxiv_oc.jpg', aspectRatio: '3 / 4', path: '/project/comms6' },
+      { id: 'illustration-na', category: 'illustrations', image: '/assets/na.png', aspectRatio: '4 / 5', path: '/project/illustration5' },
+      { id: 'illustration-aa', category: 'illustrations', image: '/assets/aa.png', aspectRatio: '3 / 4', path: '/project/illustration6' }
     ]) {
       const project = siteConfig.projects.find((item) => item.id === expected.id);
       expect(project).toMatchObject({ ...expected, objectFit: 'contain', showOnHome: false });
-      expect(project?.path).toBe(`/project/${expected.id}`);
+      expect(project?.path).toBe(expected.path);
       expect(project?.imageAlt).toBeTruthy();
     }
   });
 
-  it('keeps Commissions prominent while grouping the other galleries under Work', () => {
+  it('groups commission pages under Commissions and other galleries under Work', () => {
     expect(siteConfig.navItems.map((item) => item.label)).toEqual([
-      'Home',
+      'Selected Work',
       'Work',
       'Commissions',
       'About Me & Contact'
@@ -37,7 +58,16 @@ describe('art portfolio configuration', () => {
     });
 
     const commissions = siteConfig.navItems.find((item) => item.path === '/category/commissions');
-    expect(commissions).toEqual({ label: 'Commissions', path: '/category/commissions' });
+    expect(commissions).toEqual({
+      label: 'Commissions',
+      path: '/category/commissions',
+      children: [
+        { label: 'Commission Art', path: '/category/commissions' },
+        { label: 'Commission Info', path: '/commission-info' }
+      ]
+    });
+    expect(siteConfig.navItems.find((item) => item.path === '/commission-info'))
+      .toBeUndefined();
     expect(JSON.stringify(siteConfig.navItems)).not.toContain('Commission Inquiries');
     expect(siteConfig.projects.some((project) => project.category === 'commissions')).toBe(true);
     expect(siteConfig.socialLinks).toEqual({

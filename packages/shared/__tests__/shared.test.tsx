@@ -131,10 +131,16 @@ describe('Shared Components Regression Tests', () => {
 
       const toggle = screen.getByRole('button', { name: 'Toggle Work menu' });
       expect(toggle).toHaveAttribute('aria-expanded', 'false');
+      fireEvent.focus(toggle);
+      expect(toggle).toHaveAttribute('aria-expanded', 'false');
       fireEvent.click(toggle);
       expect(toggle).toHaveAttribute('aria-expanded', 'true');
       expect(screen.getByRole('link', { name: 'Traditional' }))
         .toHaveAttribute('href', '/category/traditional');
+      fireEvent.keyDown(toggle, { key: 'Escape' });
+      expect(toggle).toHaveAttribute('aria-expanded', 'false');
+      fireEvent.focus(screen.getByRole('link', { name: 'Work', exact: true }));
+      expect(toggle).toHaveAttribute('aria-expanded', 'true');
     });
   });
 
