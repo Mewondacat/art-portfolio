@@ -52,7 +52,7 @@ export const HomePage: React.FC = () => {
   return (
     <div className={styles.page}>
       <section className={styles.selectedWork} aria-labelledby="selected-work-title" aria-roledescription="carousel">
-        <h1 id="selected-work-title" className={styles.selectedTitle}>Selected Work</h1>
+        <h1 id="selected-work-title" className={styles.selectedTitle}>Gallery</h1>
         <div
           ref={carouselRef}
           className={styles.carousel}

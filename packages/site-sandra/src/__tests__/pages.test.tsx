@@ -49,8 +49,8 @@ describe('art portfolio gallery pages', () => {
       </MemoryRouter>
     );
 
-    const selected = screen.getByRole('region', { name: 'Selected Work' });
-    expect(within(selected).getByRole('heading', { level: 1, name: 'Selected Work' })).toBeInTheDocument();
+    const selected = screen.getByRole('region', { name: 'Gallery' });
+    expect(within(selected).getByRole('heading', { level: 1, name: 'Gallery' })).toBeInTheDocument();
     expect(screen.queryByText(/A curated selection of my illustrations/i)).not.toBeInTheDocument();
     expect(within(selected).getAllByRole('img')).toHaveLength(8);
     expect(within(selected).getAllByRole('link').map((link) => link.getAttribute('href')))
@@ -94,7 +94,7 @@ describe('art portfolio gallery pages', () => {
     }
   });
 
-  it('opens a selected artwork and returns to Selected Work with the viewer back button', () => {
+  it('opens a selected artwork and returns to Gallery with the viewer back button', () => {
     vi.useFakeTimers();
     try {
       render(
@@ -106,7 +106,7 @@ describe('art portfolio gallery pages', () => {
         </MemoryRouter>
       );
 
-      const selected = screen.getByRole('region', { name: 'Selected Work' });
+      const selected = screen.getByRole('region', { name: 'Gallery' });
       fireEvent.click(within(selected).getByRole('img', { name: /Winged celestial character/i }).closest('a')!);
       expect(screen.getByRole('button', { name: /back/ })).toBeInTheDocument();
       expect(screen.getByRole('img', { name: /Winged celestial character/i }))
@@ -114,7 +114,7 @@ describe('art portfolio gallery pages', () => {
 
       fireEvent.click(screen.getByRole('button', { name: /back/ }));
       act(() => vi.advanceTimersByTime(300));
-      expect(screen.getByRole('heading', { name: 'Selected Work' })).toBeInTheDocument();
+      expect(screen.getByRole('heading', { name: 'Gallery' })).toBeInTheDocument();
     } finally {
       vi.useRealTimers();
     }

@@ -58,7 +58,7 @@ describe('opening screen and social links', () => {
       act(() => vi.advanceTimersByTime(400));
 
       expect(sessionStorage.getItem('has_entered_portfolio')).toBe('true');
-      expect(screen.getByRole('heading', { name: 'Selected Work' })).toBeInTheDocument();
+      expect(screen.getByRole('heading', { name: 'Gallery' })).toBeInTheDocument();
       expect(screen.getByRole('link', { name: 'Explore Concepts' }))
         .toHaveAttribute('href', '/category/concepts');
       expect(screen.getByRole('img', { name: /golden spiral eyes/i }))

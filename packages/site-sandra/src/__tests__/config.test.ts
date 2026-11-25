@@ -38,7 +38,7 @@ describe('art portfolio configuration', () => {
 
   it('groups commission pages under Commissions and other galleries under Work', () => {
     expect(siteConfig.navItems.map((item) => item.label)).toEqual([
-      'Selected Work',
+      'Gallery',
       'Work',
       'Commissions',
       'About Me & Contact'

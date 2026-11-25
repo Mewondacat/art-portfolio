@@ -20,7 +20,7 @@ const config: SiteConfig = {
     email: 'mewondacat@gmail.com'
   },
   navItems: [
-    { label: 'Selected Work', path: '/' },
+    { label: 'Gallery', path: '/' },
     {
       label: 'Work',
       path: '/category/illustrations',
